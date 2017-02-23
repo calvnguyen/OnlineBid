@@ -1,0 +1,60 @@
+<div ng-init="init()">
+    <div style="text-align: right; margin-top: 30px">
+        <a href="/">Log out</a>
+    </div>
+    <h1>Bid Now!</h1>
+    <div class="row">
+        <div class="col-xs-3" ng-repeat="prodItem in prods" style="text-align: center; padding: 20px;">
+            <div style="position: relative">
+                <img ng-src="{{prodItem.img_url}}">
+                <label class="prod-label">{{prodItem.prod_name}}</label>
+            </div>
+            <div>
+                <form ng-submit="submit_bid(prodItem)">
+<!--
+                    <input type="number" ng-model="prodItem.amount" required ng-disabled="(prevBids | filter: {prod_id: prodItem._id, user_id: user._id}).length">
+                    <button type="submit" class="btn btn-primary" ng-disabled="(prevBids | filter: {prod_id: prodItem._id, user_id: user._id}).length">Bid</button>
+-->
+                    <input type="number" ng-model="prodItem.amount" required>
+                    <button type="submit" class="btn btn-primary">Bid</button>
+                </form>
+            </div>
+            <div class="text-danger">
+                {{bidError[prodItem._id]}}
+            </div>
+            <div class="mt-10 ta-l">
+                Current Bids:
+                <div class="prev-bid-panel">
+                    <div style="margin-top: 5px" ng-repeat="bidItem in filter_by_query(prodItem)"
+                         ng-class="{'text-primary': bidItem.user_id == user._id}"
+                            >
+                        <span>{{(users | filter:{_id: bidItem.user_id}:true)[0].user_name}} : </span><label> ${{bidItem.amount}}</label>
+                    </div>
+                </div>
+                <div class="ml-10">
+                    <input type="text" placeholder="search" class="form-control" ng-model="query[prodItem._id]">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-10 ta-r">
+        <button class="btn btn-default fix-button" ng-click="end_bid()">End Bid</button>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header ta-c">
+                <h3 class="modal-title" id="myModalLabel">Alert</h3>
+            </div>
+            <div class="modal-body ta-c">
+                <p>
+                    Cannot end the bid. <br>
+                    One product does not have any bid yet.
+                </p>
+                <button class="btn btn-default" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+/*CSS reset settings here*/
+*{
+ 	margin: 0px;
+ 	padding: 0px;
+}
+
+.prev-bid-panel{
+	height: 150px;
+	overflow-x: hidden;
+	text-align: left;
+	border: solid 1px gray;
+	margin: 10px;
+	padding: 10px;
+}
+
+.ta-l{
+	text-align: left !important;
+}
+
+.ta-c{
+	text-align: center !important;
+}
+
+.ta-r{
+	text-align: right !important;
+}
+
+.ml-10{
+	margin-left: 10px !important;
+}
+
+.mt-10{
+	margin-top: 10px !important;
+}
+
+.mt-5{
+	margin-top: 5px !important;
+}
+
+.prod-label{
+	position: absolute;
+	top: 50%;
+	left: 0;
+	text-align: center;
+	right: 0;
+	margin-top: -10px;
+}
+
+.fix-button{
+	position: fixed;
+	bottom: 80px;
+	right: 80px;
+}

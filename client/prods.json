@@ -1,0 +1,17 @@
+[
+  {
+    "_id": "1",
+    "prod_name": "Prod 1",
+    "img_url": "images/prod1.png"
+  },
+  {
+    "_id": "2",
+    "prod_name": "Prod 2",
+    "img_url": "images/prod2.png"
+  },
+  {
+    "_id": "3",
+    "prod_name": "Prod 3",
+    "img_url": "images/prod3.png"
+  }
+]

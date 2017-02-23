@@ -1,0 +1,33 @@
+<div ng-init="init()">
+    <div style="text-align: right; margin-top: 30px">
+        <a href="/">Log out</a>
+    </div>
+    <h1>{{user.user_name}} ended the Bid.</h1>
+    <h3>Highest Bidder per Product.</h3>
+    <div class="mt-10 row">
+        <div class="col-xs-6" ng-repeat="prodItem in prods">
+            <div class="row">
+                <div class="col-xs-8">
+                    <div style="position: relative" class="ta-c">
+                        <img ng-src="{{prodItem.img_url}}">
+                        <label class="prod-label">{{prodItem.prod_name}}</label>
+                    </div>
+                </div>
+                <div class="col-xs-4" style="font-size: 20px">
+                    <div style="margin-top: 30px">
+                        <strong>
+                            {{(users | filter : {_id: highItems[prodItem._id].user_id})[0].user_name}}
+                        </strong>
+                    </div>
+                    <div class="mt-10">
+                        <strong>$ {{highItems[prodItem._id].amount}}</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-10 ta-r">
+        <a class="btn btn-default fix-button" href ng-click="start_bid()">Start Bid</a>
+    </div>
+
+</div>
